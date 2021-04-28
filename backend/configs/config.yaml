@@ -1,0 +1,22 @@
+server:
+  bind: ":4509"
+
+logger:
+  level: debug
+
+password_generator:
+  length: 12
+  num_digits: 4
+  num_symbols: 4
+
+database:
+  addr: localhost
+  port: 27017
+  name: secret-keeper
+  user: ""
+  pass: ""
+
+security:
+  max_pin_tries: 5
+  # IMPORTANT!!! replace the cipher key with your own
+  cipher_key: "=A7$y9-\u003cz43h"

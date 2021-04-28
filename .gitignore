@@ -4,6 +4,10 @@
 *.dll
 *.so
 *.dylib
+backend/sk
+
+# idea
+.idea
 
 # Test binary, built with `go test -c`
 *.test
