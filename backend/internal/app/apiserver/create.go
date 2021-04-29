@@ -10,9 +10,7 @@ import (
 	"net/http"
 )
 
-const maxTTL int64 = 2592000
-
-func HandleCreate(logger *logrus.Logger, storage db.Interface, pg passwords.GeneratorInterface, kg uid.GeneratorInterface, cipher security.CipherInterface) http.HandlerFunc {
+func HandleCreate(logger *logrus.Logger, storage db.Interface, pg passwords.GeneratorInterface, kg uid.GeneratorInterface, cipher security.CipherInterface, maxBodySize, maxTTL int64) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var err error
 
@@ -22,6 +20,8 @@ func HandleCreate(logger *logrus.Logger, storage db.Interface, pg passwords.Gene
 			Ttl    int64  `json:"ttl"`
 			Pin    string `json:"pin"`
 		}{}
+
+		r.Body = http.MaxBytesReader(w, r.Body, maxBodySize)
 
 		if err = json.NewDecoder(r.Body).Decode(dto); err != nil {
 			logger.Errorf("failed to decode JSON request body: %v", err)

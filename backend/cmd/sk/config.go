@@ -24,7 +24,9 @@ type Config struct {
 	} `yaml:"database"`
 
 	Security struct {
-		CipherKey   string `yaml:"cipher_key"`
-		MaxPinTries int8   `yaml:"max_pin_tries"`
+		CipherKey    string `yaml:"cipher_key"`
+		MaxPinTries  int8   `yaml:"max_pin_tries"`
+		MaxBodyBytes int64  `yaml:"max_body_bytes"`
+		MaxTTL       int64  `yaml:"max_ttl"`
 	} `yaml:"security"`
 }

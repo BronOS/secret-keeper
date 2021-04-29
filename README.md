@@ -21,4 +21,3 @@ make build
 ## TODO:
 - integrate with let's encrypt 
 - nginx ssl config
-- body size limitation

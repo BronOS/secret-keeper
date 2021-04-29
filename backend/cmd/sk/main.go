@@ -133,7 +133,7 @@ func readConfig(configPath string) *Config {
 
 func setRoutes(router *mux.Router) {
 	router.HandleFunc("/api/v1/ping", apiserver.HandlePing(startedAt)).Methods(http.MethodGet)
-	router.HandleFunc("/api/v1/secret/create", apiserver.HandleCreate(logger, storage, pg, kg, cipher)).Methods(http.MethodPost)
+	router.HandleFunc("/api/v1/secret/create", apiserver.HandleCreate(logger, storage, pg, kg, cipher, config.Security.MaxBodyBytes, config.Security.MaxTTL)).Methods(http.MethodPost)
 	router.HandleFunc("/api/v1/secret/info", apiserver.HandleInfo(logger, storage, config.Security.MaxPinTries)).Methods(http.MethodGet)
 	router.HandleFunc("/api/v1/secret/view", apiserver.HandleView(logger, storage, config.Security.MaxPinTries, cipher)).Methods(http.MethodGet)
 	router.HandleFunc("/api/v1/secret/delete", apiserver.HandleDelete(logger, storage)).Methods(http.MethodDelete)

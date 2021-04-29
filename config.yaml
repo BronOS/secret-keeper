@@ -18,5 +18,7 @@ database:
 
 security:
   max_pin_tries: 5
+  max_body_bytes: 10240
+  max_ttl: 2592000
   # IMPORTANT!!! replace the cipher key with your own
   cipher_key: "=A7$y9-\u003cz43h"
