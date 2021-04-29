@@ -9,6 +9,9 @@ backend/sk
 # idea
 .idea
 
+# production
+prod/*
+
 # Test binary, built with `go test -c`
 *.test
 
